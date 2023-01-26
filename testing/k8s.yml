@@ -20,6 +20,9 @@ spec:
           ports:
             - name: http
               containerPort: 8080
+          env:
+            - name: test1
+              value: old
 
 ---
 apiVersion: v1
@@ -33,3 +36,23 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: environment
+data:
+  # each key is a deployment name
+  # value is a JSON array of {name, value} object
+  echo-server: |
+    [
+      {
+        "name": "test1",
+        "value": "new1"
+      },
+      {
+        "name": "test2",
+        "value": "new2"
+      }
+    ]

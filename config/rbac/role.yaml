@@ -1,0 +1,50 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - custom.pedro
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - custom.pedro
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+  - update
+  - watch
+- apiGroups:
+  - custom.pedro
+  resources:
+  - envvars
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - custom.pedro
+  resources:
+  - envvars/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - custom.pedro
+  resources:
+  - envvars/status
+  verbs:
+  - get
+  - patch
+  - update

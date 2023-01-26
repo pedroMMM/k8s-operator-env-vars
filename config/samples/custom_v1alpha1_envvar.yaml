@@ -1,0 +1,12 @@
+apiVersion: custom.pedro/v1alpha1
+kind: EnvVar
+metadata:
+  labels:
+    app.kubernetes.io/name: envvar
+    app.kubernetes.io/instance: envvar-sample
+    app.kubernetes.io/part-of: k8s-operator-env-vars
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: k8s-operator-env-vars
+  name: envvar-sample
+spec:
+  # TODO(user): Add fields here

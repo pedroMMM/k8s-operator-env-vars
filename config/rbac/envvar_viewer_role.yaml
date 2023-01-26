@@ -1,0 +1,27 @@
+# permissions for end users to view envvars.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: envvar-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: k8s-operator-env-vars
+    app.kubernetes.io/part-of: k8s-operator-env-vars
+    app.kubernetes.io/managed-by: kustomize
+  name: envvar-viewer-role
+rules:
+- apiGroups:
+  - custom.pedro
+  resources:
+  - envvars
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - custom.pedro
+  resources:
+  - envvars/status
+  verbs:
+  - get
